@@ -8,13 +8,59 @@ To write a program to find the solution of a matrix using Gaussian Elimination.
 2. Anaconda – Python 3.7 Installation / Moodle-Code Runner
 
 ## Algorithm
-1.First,we want to import numpy,then import sys,assume a variable.
+### Step 1: Input
 
-2.For gaussian elimination method, we want to make 2nd and 3rd column zero.
+Start the program.
 
-3.For that we want to make a range accorting to our program output.
+Input the number of unknowns n.
 
-4.Then print the program with correct form then the output will display.
+Create an augmented matrix A of size n x (n+1) to store the coefficients and constants of the equations.
+
+### Step 2: Read the Augmented Matrix
+
+Use nested loops to input all the elements of the augmented matrix from the user.
+
+### Step 3: Forward Elimination (Convert to Upper Triangular Matrix)
+
+For each pivot row i from 0 to n-1:
+
+For each row j below row i (i.e., j = i+1 to n-1):
+
+Calculate the ratio = A[j][i] / A[i][i]
+
+For each column k from 0 to n:
+
+Update A[j][k] = A[j][k] - ratio * A[i][k]
+
+This eliminates the elements below the pivot and converts the matrix to upper triangular form.
+
+### Step 4: Back Substitution
+
+Initialize a solution array x of size n with zeros.
+
+Solve for the last variable:
+x[n-1] = A[n-1][n] / A[n-1][n-1]
+
+For each row i from n-2 down to 0:
+
+Set x[i] = A[i][n]
+
+For each column j from i+1 to n-1:
+
+Subtract A[i][j] * x[j] from x[i]
+
+Divide x[i] by A[i][i]
+
+### Step 5: Output the Result
+
+Print the solution array x, displaying each unknown variable with its value.
+
+### Step 6: End
+
+The program terminates after displaying the solution.
+
+
+Create an augmented matrix A of size n x (n+1) to store the coefficients and constants of the equations.
 ## Program:
 ```
 Program to find the solution of a matrix using Gaussian Elimination.
